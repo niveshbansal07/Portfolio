@@ -130,3 +130,110 @@ font-weight: 400;
 
 }
 
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+@media (max-width: 1200px) {
+  .projects, .certificates {
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .project img, .certificate img {
+    width: 350px;
+  }
+
+  .project-content, .certificate-content {
+    width: 350px;
+  }
+}
+
+@media (max-width: 992px) {
+  .projects, .certificates {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project, .certificate {
+    width: 90%;
+    max-width: 450px;
+  }
+
+  .project img, .certificate img {
+    width: 100%;
+  }
+
+  .project-content, .certificate-content {
+    width: 100%;
+  }
+
+  .project-link {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 3rem;
+    margin-top: 30px;
+  }
+
+  .project img, .certificate img {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  .projects, .certificates {
+    gap: 25px;
+  }
+
+  .project-content p, .certificate-content p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .heading {
+    font-size: 2.3rem;
+  }
+
+  .project img, .certificate img {
+    width: 100%;
+  }
+
+  .project-content, .certificate-content {
+    width: 100%;
+  }
+
+  .project-link {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    font-size: 0.85rem;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .heading {
+    font-size: 2rem;
+  }
+
+  .project img, .certificate img {
+    width: 100%;
+  }
+
+  .project-content p, .certificate-content p {
+    font-size: 0.8rem;
+  }
+
+  .projects, .certificates {
+    gap: 20px;
+  }
+}
