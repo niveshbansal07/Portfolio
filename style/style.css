@@ -430,3 +430,156 @@ canvas {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 }
+
+/* CONTACT */
+
+.contact-section {
+  max-width: 1100px;
+  margin: 0px auto;
+  display: flex;
+}
+
+/* Panels */
+.panel {
+  width: 50%;
+  padding: 20px;
+}
+
+/* Left column */
+.left h2 {
+  font-size: 28px;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.left p.lead {
+  margin: 0 0 18px;
+  color: rgba(255, 255, 255, 0.85)
+}
+
+.show-btn {
+  display: inline-flex;
+  padding: 7px 7px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px
+}
+
+.contact-item {
+  display: flex;
+  gap: 12px;
+  align-items: center
+}
+
+.contact-item svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px
+}
+
+.contact-item a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500
+}
+
+.contact-item .meta {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 15px
+}
+
+.cta-row {
+  margin-top: 22px;
+}
+
+/* Right column (form) */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px
+}
+
+label {
+  font-size: 13px;
+  font-weight: 600
+}
+
+input[type=text],
+input[type=email] {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--input-fg);
+  font-size: 15px;
+  resize: vertical;
+  border: 1px solid white;
+  font-family: "Alan Sans", sans-serif;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--input-fg);
+  font-size: 15px;
+  resize: vertical;
+  border: 1px solid white;
+  font-family: "Alan Sans", sans-serif;
+  height: 165px;
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+}
+
+.col {
+  width: 50%;
+}
+
+.submit-wrap {
+  display: flex;
+  width: 50%
+}
+
+.submit-wrap .submit-btn {
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 3px 0px;
+  background: white;
+}
+
+/* ✅ Responsive Design */
+@media screen and (max-width: 900px) {
+  .contact-section {
+    flex-direction: column;
+    gap: 30px;
+    padding: 15px;
+  }
+
+  .panel {
+    width: 100%;
+  }
+
+  .submit-wrap {
+    justify-content: center;
+  }
+
+  .submit {
+    width: 100%;
+  }
+
+  .left h2 {
+    font-size: 24px;
+  }
+}
