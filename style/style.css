@@ -7,6 +7,22 @@
   box-sizing: border-box;
 }
 
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+section {
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
 @font-face {
   font-family: 'MyFont';
   src: url('../Font/osaka_sans_serif/osaka-re.ttf');
@@ -36,7 +52,8 @@ canvas {
 
 /* ---------- Project & .certificate ---------- */
 
-.projects, .certificates {
+.projects,
+.certificates {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -46,19 +63,22 @@ canvas {
   padding: 20px;
 }
 
-.project, .certificate {
+.project,
+.certificate {
   flex-direction: column;
   align-items: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.project img, .certificate img {
+.project img,
+.certificate img {
   width: 400px;
   transition: transform 0.5s ease;
   border-radius: 12px;
 }
 
-.project img:hover, .certificate img:hover {
+.project img:hover,
+.certificate img:hover {
   transform: translateY(-5px);
   box-shadow: 0 6px 15px rgba(255, 255, 255, 0.1);
 }
@@ -67,29 +87,34 @@ canvas {
   font-family: 'MyFont';
   font-size: 4rem;
   text-align: center;
-  margin-top: 40px;
 }
 
-.project-content, .certificate-content{
+.project-content,
+.certificate-content {
   width: 400px;
 }
-.project-content p, .certificate-content p{
+
+.project-content p,
+.certificate-content p {
   font-size: small;
   font-weight: 100;
   margin: 0;
 }
 
-.project-content .skills, .certificate-content .skills{
-font-weight: 400;
+.project-content .skills,
+.certificate-content .skills {
+  font-weight: 400;
 }
-.project-content h3, .certificate-content h3{
-  margin:5px 0px;
+
+.project-content h3,
+.certificate-content h3 {
+  margin: 5px 0px;
   font-weight: 500;
 }
 
 /* ---------- BUTTON's ---------- */
 
-.project-link{
+.project-link {
   display: flex;
   gap: 10px;
   width: 100%;
@@ -133,36 +158,45 @@ font-weight: 400;
 /* ---------- RESPONSIVE DESIGN ---------- */
 
 @media (max-width: 1200px) {
-  .projects, .certificates {
+
+  .projects,
+  .certificates {
     gap: 20px;
     padding: 15px;
   }
 
-  .project img, .certificate img {
+  .project img,
+  .certificate img {
     width: 350px;
   }
 
-  .project-content, .certificate-content {
+  .project-content,
+  .certificate-content {
     width: 350px;
   }
 }
 
 @media (max-width: 992px) {
-  .projects, .certificates {
+
+  .projects,
+  .certificates {
     flex-direction: column;
     align-items: center;
   }
 
-  .project, .certificate {
+  .project,
+  .certificate {
     width: 90%;
     max-width: 450px;
   }
 
-  .project img, .certificate img {
+  .project img,
+  .certificate img {
     width: 100%;
   }
 
-  .project-content, .certificate-content {
+  .project-content,
+  .certificate-content {
     width: 100%;
   }
 
@@ -182,16 +216,19 @@ font-weight: 400;
     margin-top: 30px;
   }
 
-  .project img, .certificate img {
+  .project img,
+  .certificate img {
     width: 100%;
     border-radius: 10px;
   }
 
-  .projects, .certificates {
+  .projects,
+  .certificates {
     gap: 25px;
   }
 
-  .project-content p, .certificate-content p {
+  .project-content p,
+  .certificate-content p {
     font-size: 0.9rem;
   }
 }
@@ -201,11 +238,13 @@ font-weight: 400;
     font-size: 2.3rem;
   }
 
-  .project img, .certificate img {
+  .project img,
+  .certificate img {
     width: 100%;
   }
 
-  .project-content, .certificate-content {
+  .project-content,
+  .certificate-content {
     width: 100%;
   }
 
@@ -225,15 +264,169 @@ font-weight: 400;
     font-size: 2rem;
   }
 
-  .project img, .certificate img {
+  .project img,
+  .certificate img {
     width: 100%;
   }
 
-  .project-content p, .certificate-content p {
+  .project-content p,
+  .certificate-content p {
     font-size: 0.8rem;
   }
 
-  .projects, .certificates {
+  .projects,
+  .certificates {
     gap: 20px;
+  }
+}
+
+
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: transparent;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+/* Left */
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Alan Sans", sans-serif;
+
+}
+
+.nav-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #fff;
+}
+
+.nav-name {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+/* Right */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  font-family: 'MyFont';
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: 0.3s;
+  position: relative;
+}
+
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: white;
+  bottom: -5px;
+  left: 0;
+  transition: 0.3s;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: 3px;
+  width: 25px;
+  background: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Mobile */
+@media screen and (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    position: fixed;
+    /* fixed to viewport */
+    top: 60px;
+    /* below navbar */
+    left: 0;
+    width: 100vw;
+    /* full viewport width */
+    background: rgba(0, 0, 0, 0.7);
+    /* same as navbar */
+    /* background: transparent; */
+    backdrop-filter: blur(5px);
+    display: none;
+    padding: 20px 0;
+    text-align: center;
+    gap: 20px;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+    animation: slideDown 0.4s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .menu-toggle {
+    display: flex;
+    cursor: pointer;
+  }
+
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 }
