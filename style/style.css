@@ -623,7 +623,7 @@ textarea {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   margin: auto 20px;
   float: left;
-   margin-left: auto;
+  margin-left: auto;
   /* object-fit: cover; */
 }
 
@@ -641,16 +641,21 @@ textarea {
 
 
 .typing-container {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 3rem;
+  font-weight: 500;
   position: relative;
-  display: flex;
-  align-items: center;  
+  align-items: center;
   font-family: "Alan Sans", sans-serif;
+  z-index: 2;
+  color: black;
+  margin: 20px 30px;
 }
 
 .static-text {
   margin-right: 8px;
+  font-family: 'MyFont';
+  font-weight: 600;
+  font-size: 4rem;
 }
 
 .typing-text {
@@ -662,7 +667,39 @@ textarea {
   position: absolute;
   right: -8px;
   color: white;
+  color: black;
   animation: blink 0.7s infinite;
+  font-size: 4rem;
+  font-weight: 100;
+}
+
+.home-bio p {
+  font-size: medium;
+}
+
+.home-resume {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  color: #000;
+  text-decoration: none;
+  font-size: medium;
+  transition: color 0.3s ease;
+}
+
+.home-resume:hover {
+  color: #555;
+  text-decoration: underline;
+}
+
+.home-resume svg {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.home-resume:hover svg {
+  transform: translateX(4px);
 }
 
 @keyframes blink {
@@ -677,4 +714,28 @@ textarea {
   75% {
     opacity: 0;
   }
+}
+
+
+.social-icons {
+  align-items: center;
+  justify-content: center;
+  gap: 20px; 
+}
+
+.social-icons a {
+  text-decoration: none;
+  color: black;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.social-icons svg {
+  width: 26px;
+  height: 26px;
+  stroke: black;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+  opacity: 0.7;
 }
