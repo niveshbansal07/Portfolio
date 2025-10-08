@@ -1,0 +1,187 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Data & Web Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Using Inter font for modern look */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7; /* Very light gray/white background */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* Custom styling for the typing effect's blinking cursor */
+        .typewriter-text::after {
+            content: '|';
+            animation: blink-caret 0.75s step-end infinite;
+            font-weight: 700;
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; } /* Cursor color matches the text background */
+        }
+
+        /* Styles for the "3D Logo" elements (floating bubbles) */
+        .tech-logo {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            cursor: pointer;
+            position: absolute;
+            z-index: 10;
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            /* Creates a lifted, 3D effect */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1); 
+            font-weight: 600;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem; /* text-sm */
+        }
+
+        .tech-logo:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 20px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Specific logo placement relative to the main container */
+        .logo-1 { top: 10%; left: 0%; background-color: #000000; } /* GitHub */
+        .logo-2 { top: 35%; right: -5%; background-color: #007ACC; transform: rotate(5deg); } /* VS Code */
+        .logo-3 { bottom: 10%; left: -10%; background-color: #E44D26; transform: rotate(-3deg); } /* HTML5 */
+        .logo-4 { bottom: -5%; right: 15%; background-color: #264DE4; transform: rotate(2deg); } /* CSS3 */
+        .logo-5 { top: 60%; left: -15%; background-color: #F2C811; transform: rotate(-8deg); } /* Power BI */
+
+        /* Responsive adjustments for mobile/tablet */
+        @media (max-width: 1023px) {
+            .logo-1, .logo-2, .logo-3, .logo-4, .logo-5 {
+                position: static; /* Stack logos on mobile */
+                margin-bottom: 0.5rem;
+                transform: none !important;
+                box-shadow: none;
+            }
+            .logo-container-mobile {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+                margin-top: 1rem;
+                justify-center: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MAIN PORTFOLIO SECTION -->
+    <div class="w-full max-w-6xl p-4 sm:p-10 relative">
+
+        <!-- GRID LAYOUT - High contrast text block on the left, photo block on the right -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 relative z-20">
+
+            <!-- COLUMN 1 & 2: TEXT BLOCK (Takes 2/3 width on desktop) -->
+            <div class="lg:col-span-2 relative p-6 sm:p-10 bg-black text-white rounded-2xl shadow-2xl">
+                
+                <!-- TOP INTRO TEXT -->
+                <p class="text-xs sm:text-sm uppercase tracking-widest text-gray-400 mb-2">Hello, I'm [Your Name]</p>
+                
+                <!-- HUGE TITLE BLOCK (Typing Effect Target) -->
+                <h1 class="text-5xl sm:text-7xl lg:text-[7rem] xl:text-[8rem] font-extrabold leading-none tracking-tighter">
+                    <!-- Target span for JavaScript typing effect -->
+                    <span id="typewriter" class="typewriter-text block"></span>
+                </h1>
+
+                <!-- SUB TEXT/BIO -->
+                <div class="mt-8 text-base max-w-xl text-gray-300">
+                    <p>I transform complex data into clear, actionable insights and build responsive, modern web applications. My focus is on leveraging **data-driven solutions** to create seamless digital experiences and powerful analytical tools.</p>
+                </div>
+
+                <!-- CALL TO ACTION -->
+                <a href="#projects" class="mt-8 inline-flex items-center text-black bg-white py-3 px-6 rounded-full font-bold shadow-lg hover:shadow-xl transition duration-300">
+                    View My Work →
+                </a>
+
+                <!-- Mobile Logos Container (Hidden on desktop) -->
+                <div id="logo-container-mobile" class="logo-container-mobile hidden max-lg:flex">
+                    <div class="tech-logo logo-1 bg-black text-white">🐙 GitHub</div>
+                    <div class="tech-logo logo-2 bg-blue-600 text-white">💻 VS Code</div>
+                    <div class="tech-logo logo-3 bg-orange-600 text-white">📄 HTML5</div>
+                    <div class="tech-logo logo-4 bg-blue-700 text-white">🎨 CSS3</div>
+                    <div class="tech-logo logo-5 bg-yellow-500 text-black">📊 Power BI</div>
+                </div>
+            </div>
+
+            <!-- COLUMN 3: USER PHOTO (Mid-section placement) -->
+            <!-- The negative margin helps overlap it with the text block, matching the inspiration image -->
+            <div class="lg:col-span-1 flex justify-center items-start lg:items-center relative z-30 -mt-20 lg:mt-0">
+                <div class="relative w-64 h-96 sm:w-80 sm:h-[28rem] rounded-2xl overflow-hidden shadow-2xl border-4 border-white transform hover:scale-[1.02] transition duration-500">
+                    <!-- Placeholder for user's photo - CHANGE THIS URL TO YOUR PHOTO -->
+                    <img src="https://placehold.co/320x448/333/fff?text=Your+Photo" 
+                         alt="Your Professional Headshot" 
+                         class="object-cover w-full h-full" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/320x448/333/fff?text=Photo+Missing';"
+                    >
+                    <!-- Small overlay badge -->
+                    <div class="absolute bottom-4 left-4 bg-yellow-400 text-black px-3 py-1 text-sm font-bold rounded-lg shadow-md">
+                        AVAILABLE FOR WORK
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLOATING 3D LOGO CLUSTER (Replaces the skill bubbles, positioned relative to the overall container) -->
+        <!-- This container is for desktop view -->
+        <div id="logo-container-desktop" class="relative w-full h-0 max-lg:hidden">
+            <!-- GitHub -->
+            <div class="tech-logo logo-1">🐙 GitHub</div>
+
+            <!-- VS Code -->
+            <div class="tech-logo logo-2">💻 VS Code</div>
+
+            <!-- HTML5 -->
+            <div class="tech-logo logo-3">📄 HTML5</div>
+
+            <!-- CSS3 -->
+            <div class="tech-logo logo-4">🎨 CSS3</div>
+
+            <!-- Power BI -->
+            <div class="tech-logo logo-5">📊 Power BI</div>
+        </div>
+
+    </div>
+
+    <script>
+        // === JAVASCRIPT FOR TYPING EFFECT (Appear one by one) ===
+        const targetElement = document.getElementById('typewriter');
+        // This is the text you wanted to appear one by one
+        const textToType = "DATA ANALYST / WEB DEVELOPER"; 
+        let charIndex = 0;
+
+        function typeCharacter() {
+            if (charIndex < textToType.length) {
+                targetElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                // Typing speed: 80 milliseconds per character
+                setTimeout(typeCharacter, 80); 
+            } else {
+                // Remove the blinking cursor style once typing is finished
+                targetElement.classList.remove('typewriter-text');
+            }
+        }
+
+        // Start the typing sequence after the page loads
+        window.onload = () => {
+            setTimeout(typeCharacter, 500); 
+        };
+    </script>
+</body>
+</html>

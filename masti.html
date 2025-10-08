@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Home Capsule</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000; /* black body */
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Capsule container */
+    .capsule {
+      position: relative;
+      width: 80%;
+      max-width: 900px;
+      height: 70%;
+      background-color: #fff; /* white capsule */
+      border-radius: 80px; /* half capsule shape */
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Canvas grid inside capsule */
+    .capsule canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* Photo */
+    .capsule img {
+      position: relative;
+      height: 80%;
+      width: auto;
+      z-index: 2;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      object-fit: cover;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .capsule {
+        width: 90%;
+        height: 60%;
+      }
+
+      .capsule img {
+        height: 70%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="capsule">
+    <canvas id="capsule-bg"></canvas>
+    <img src="your-photo.png" alt="My Photo">
+  </div>
+
+  <script>
+    // Canvas setup
+    const canvas = document.getElementById('capsule-bg');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = canvas.parentElement.clientWidth;
+    let height = canvas.height = canvas.parentElement.clientHeight;
+
+    const gridSpacing = 50; // Grid distance
+    let offsetX = 0;
+    let offsetY = 0;
+    const speedX = 0.5;
+    const speedY = 0.3;
+
+    function drawGrid() {
+      ctx.clearRect(0, 0, width, height);
+
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 1;
+
+      // Vertical lines
+      for (let x = -gridSpacing + (offsetX % gridSpacing); x < width; x += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+
+      // Horizontal lines
+      for (let y = -gridSpacing + (offsetY % gridSpacing); y < height; y += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+    }
+
+    function animate() {
+      offsetX += speedX;
+      offsetY += speedY;
+      drawGrid();
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Handle capsule resize
+    window.addEventListener('resize', () => {
+      width = canvas.width = canvas.parentElement.clientWidth;
+      height = canvas.height = canvas.parentElement.clientHeight;
+    });
+  </script>
+
+</body>
+</html>

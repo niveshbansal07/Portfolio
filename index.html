@@ -38,12 +38,20 @@
     </nav>
 
     <section id="home">
-        <div class="heading">Coming soon</div>
-        <div class="heading"><a href="#projects">See Projects</a></div>
+        <div class="typing-container">
+            <span class="static-text">I am</span>
+            <span id="typing-text" class="typing-text"></span>
+        </div>
+        <div class="capsule">
+            <canvas id="capsule-bg"></canvas>
+            <img src="src/Me/me-bg.png" alt="My Photo">
+        </div>
+
     </section>
 
     <section id="skills">
-        
+        <div class="heading">Coming soon</div>
+        <div class="heading"><a href="#projects">See Projects</a></div>
     </section>
 
     <section id="projects">
@@ -409,47 +417,6 @@
 
 
     <script>
-        const canvas = document.getElementById("grid");
-        const ctx = canvas.getContext("2d");
-
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const gridSize = 20;
-        let offset = 0;
-
-        function drawGrid() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.strokeStyle = "rgba(255,255,255,0.08)";
-            ctx.lineWidth = 1;
-
-            ctx.beginPath();
-            for (let x = -offset; x < canvas.width; x += gridSize) {
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, canvas.height);
-            }
-            for (let y = -offset; y < canvas.height; y += gridSize) {
-                ctx.moveTo(0, y);
-                ctx.lineTo(canvas.width, y);
-            }
-            ctx.stroke();
-
-            offset += 0.3;
-            if (offset > gridSize) offset = 0;
-        }
-
-        function animate() {
-            drawGrid();
-            requestAnimationFrame(animate);
-        }
-
-        animate();
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-
-
         const mobileMenu = document.getElementById('mobile-menu');
         const navLinks = document.querySelector('.nav-links');
 
@@ -457,9 +424,6 @@
             navLinks.classList.toggle('active');
             mobileMenu.classList.toggle('active');
         });
-
-
-
         // ultra-smooth scroll function
         function smoothScrollTo(targetY, duration = 600) {
             const startY = window.scrollY;
@@ -495,10 +459,141 @@
                 smoothScrollTo(y, 700); // smooth scroll
             });
         });
+    </script>
 
+    <script>
+        // First canvas (full screen background grid)
+        const canvas1 = document.getElementById("grid");
+        const ctx1 = canvas1.getContext("2d");
+
+        canvas1.width = window.innerWidth;
+        canvas1.height = window.innerHeight;
+
+        const gridSize = 20;
+        let offset1 = 0;
+
+        function drawGridBackground() {
+            ctx1.clearRect(0, 0, canvas1.width, canvas1.height);
+            ctx1.strokeStyle = "rgba(255,255,255,0.08)";
+            ctx1.lineWidth = 1;
+
+            ctx1.beginPath();
+            for (let x = -offset1; x < canvas1.width; x += gridSize) {
+                ctx1.moveTo(x, 0);
+                ctx1.lineTo(x, canvas1.height);
+            }
+            for (let y = -offset1; y < canvas1.height; y += gridSize) {
+                ctx1.moveTo(0, y);
+                ctx1.lineTo(canvas1.width, y);
+            }
+            ctx1.stroke();
+
+            offset1 += 0.3;
+            if (offset1 > gridSize) offset1 = 0;
+        }
+
+        function animateBackground() {
+            drawGridBackground();
+            requestAnimationFrame(animateBackground);
+        }
+        animateBackground();
+
+        // Resize handler
+        window.addEventListener("resize", () => {
+            canvas1.width = window.innerWidth;
+            canvas1.height = window.innerHeight;
+        });
+
+
+        // Second canvas (inside capsule)
+        const canvas2 = document.getElementById('capsule-bg');
+        const ctx2 = canvas2.getContext('2d');
+
+        function resizeCapsuleCanvas() {
+            canvas2.width = canvas2.parentElement.clientWidth;
+            canvas2.height = canvas2.parentElement.clientHeight;
+        }
+        resizeCapsuleCanvas();
+
+        let offsetX = 0;
+        let offsetY = 0;
+        const gridSpacing = 40;
+        const speedX = 0.5;
+        const speedY = 0.3;
+
+        function drawGridCapsule() {
+            ctx2.clearRect(0, 0, canvas2.width, canvas2.height);
+
+            ctx2.strokeStyle = '#000';
+            ctx2.lineWidth = 1;
+
+            // Vertical lines
+            for (let x = -gridSpacing + (offsetX % gridSpacing); x < canvas2.width; x += gridSpacing) {
+                ctx2.beginPath();
+                ctx2.moveTo(x, 0);
+                ctx2.lineTo(x, canvas2.height);
+                ctx2.stroke();
+            }
+
+            // Horizontal lines
+            for (let y = -gridSpacing + (offsetY % gridSpacing); y < canvas2.height; y += gridSpacing) {
+                ctx2.beginPath();
+                ctx2.moveTo(0, y);
+                ctx2.lineTo(canvas2.width, y);
+                ctx2.stroke();
+            }
+        }
+
+        function animateCapsule() {
+            offsetX += speedX;
+            offsetY += speedY;
+            drawGridCapsule();
+            requestAnimationFrame(animateCapsule);
+        }
+        animateCapsule();
+
+        // Resize handler
+        window.addEventListener('resize', resizeCapsuleCanvas);
 
     </script>
 
+    <script>
+        const textElement = document.getElementById("typing-text");
+        const roles = ["Data Analyst", "Web Developer"];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+        const typingSpeed = 120;
+        const erasingSpeed = 80;
+        const delayBetweenRoles = 1500;
+
+        function typeAnimation() {
+            const currentRole = roles[roleIndex];
+
+            if (!deleting && charIndex <= currentRole.length) {
+                textElement.textContent = currentRole.substring(0, charIndex++);
+                setTimeout(typeAnimation, typingSpeed);
+            }
+            else if (deleting && charIndex >= 0) {
+                textElement.textContent = currentRole.substring(0, charIndex--);
+                setTimeout(typeAnimation, erasingSpeed);
+            }
+            else {
+                if (!deleting) {
+                    deleting = true;
+                    setTimeout(typeAnimation, delayBetweenRoles);
+                } else {
+                    deleting = false;
+                    roleIndex = (roleIndex + 1) % roles.length;
+                    setTimeout(typeAnimation, typingSpeed);
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(typeAnimation, 1000);
+        });
+    </script>
 </body>
 
 </html>

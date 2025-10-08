@@ -583,3 +583,96 @@ textarea {
     font-size: 24px;
   }
 }
+
+.capsule {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 70vh;
+  background-color: #fff;
+  border-top-right-radius: 500px;
+  border-bottom-right-radius: 500px;
+  /* half capsule shape */
+  overflow: hidden;
+  display: flex;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-top: px;
+}
+
+/* Canvas grid inside capsule */
+.capsule canvas {
+  position: absolute;
+  /* top: 0; */
+  /* left: 0; */
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Photo */
+.capsule img {
+  position: relative;
+  height: 80%;
+  width: auto;
+  z-index: 2;
+  /* border-radius: 10px; */
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
+  /* object-fit: cover; */
+}
+
+/* Responsive */
+/* @media (max-width: 768px) {
+  .capsule {
+    width: 90%;
+    height: 60%;
+  }
+
+  .capsule img {
+    height: 70%;
+  }
+} */
+
+
+.typing-container {
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  display: flex;
+  align-items: center;
+    font-family: 'MyFont';
+      font-family: "Alan Sans", sans-serif;
+
+
+}
+
+.static-text {
+  margin-right: 8px;
+}
+
+.typing-text {
+  position: relative;
+}
+
+.typing-text::after {
+  content: "|";
+  position: absolute;
+  right: -8px;
+  color: white;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
