@@ -617,8 +617,13 @@ textarea {
   height: 80%;
   width: auto;
   z-index: 2;
-  /* border-radius: 10px; */
-  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
+  height: 90%;
+  border: 2px solid black;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  margin: auto 20px;
+  float: left;
+   margin-left: auto;
   /* object-fit: cover; */
 }
 
@@ -640,11 +645,8 @@ textarea {
   font-weight: 600;
   position: relative;
   display: flex;
-  align-items: center;
-    font-family: 'MyFont';
-      font-family: "Alan Sans", sans-serif;
-
-
+  align-items: center;  
+  font-family: "Alan Sans", sans-serif;
 }
 
 .static-text {
