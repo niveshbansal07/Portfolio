@@ -584,6 +584,13 @@ textarea {
   }
 }
 
+
+
+/* Home Section */
+
+
+
+
 .capsule {
   z-index: 2;
   position: relative;
@@ -628,7 +635,7 @@ textarea {
 }
 
 /* Responsive */
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .capsule {
     width: 90%;
     height: 60%;
@@ -637,7 +644,7 @@ textarea {
   .capsule img {
     height: 70%;
   }
-} */
+}
 
 
 .typing-container {
@@ -716,10 +723,9 @@ textarea {
   }
 }
 
-
 .social-icons {
-  align-items: center;
-  justify-content: center;
+  display: flex;
+  align-items: left;
   gap: 20px; 
 }
 
@@ -738,4 +744,65 @@ textarea {
 .social-icons a:hover {
   transform: scale(1.1);
   opacity: 0.7;
+}
+
+
+/* --- Mobile-only styling --- */
+@media (max-width: 768px) {
+
+  /* Hide photo only on mobile */
+  .capsule img {
+    display: none;
+  }
+
+  /* Capsule height reduced for better layout */
+  .capsule {
+    height: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 15px;
+    border-radius: 30px;
+    margin: auto;
+  }
+
+  /* Text adjustments */
+  .typing-container {
+    font-size: 1.8rem;
+    margin: 10px 0;
+  }
+
+  .static-text {
+    font-size: 2.2rem;
+  }
+
+  .typing-text::after {
+    font-size: 2rem;
+  }
+
+  .home-bio p {
+    font-size: 0.95rem;
+    margin: 10px 0;
+    line-height: 1.4;
+  }
+
+  /* Resume link smaller */
+  .home-resume {
+    font-size: 0.95rem;
+    gap: 4px;
+  }
+
+  /* Social icons centered in one line */
+  .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    justify-content: left;
+  }
+
+  .social-icons svg {
+    width: 22px;
+    height: 22px;
+    stroke: black;
+  }
 }
