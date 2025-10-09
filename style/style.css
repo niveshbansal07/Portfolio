@@ -680,6 +680,9 @@ textarea {
   font-weight: 100;
 }
 
+.home-bio{
+  margin-top: 10vh;
+}
 .home-bio p {
   font-size: medium;
 }
