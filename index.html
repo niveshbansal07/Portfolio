@@ -102,9 +102,84 @@
 
     </section>
 
-    <section id="skills">
+    <section id="skills" class="skills-section">
         <div class="heading">Skills</div>
-        <div class="heading"><a href="#projects">See Projects</a></div>
+        <div class="skills-container">
+
+            <!-- Data Analytics -->
+            <div class="skill" data-skill="Excel">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHJvbGU9ImltZyIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iNDgiIGhlaWdodD0iNDgiPjx0aXRsZT5NaWNyb3NvZnQgRXhjZWw8L3RpdGxlPjxwYXRoIGZpbGw9IiMyMTczNDYiIGQ9Ik0yMy40OTggMS42SDcuNzk4Yy0uMzQgMC0uNi4yNi0uNi42djIuOUguNjAyYy0uMzQgMC0uNi4yNi0uNi42djEyLjZjMCAuMzQuMjYuNi42LjZoNi42djIuOWMwIC4zNC4yNi42LjYuNmgxNS43Yy4zNCAwIC42LS4yNi42LS42VjIuMmMwLS4zNC0uMjYtLjYtLjYtLjZ6bS0xNS45IDE1LjJoLTEuN2wtMS44LTMuNC0xLjggMy40aC0xLjdsMi42LTQuOS0yLjUtNC43aDEuN2wxLjcgMy4zIDEuNy0zLjNoMS43bC0yLjUgNC43IDIuNiA0Ljl6bTE0LjkgNC41SDguMzk4VjIuN2gxNC4xVjIxLjN6Ii8+PC9zdmc+"
+                    alt="Excel logo" width="48" height="48">
+            </div>
+
+            <div class="skill" data-skill="SQL">
+                <img src="https://cdn.simpleicons.org/mysql/4479A1" alt="">
+            </div>
+
+            <div class="skill" data-skill="Power BI">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/New_Power_BI_Logo.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="Python">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="Pandas">
+                <img src="https://pandas.pydata.org/static/img/pandas_secondary_white.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="Numpy">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/NumPy_logo.svg" alt="NumPy"
+                    style="filter: brightness(1.35) saturate(130%) contrast(110%);">
+            </div>
+
+            <!-- Data Visualization -->
+            <div class="skill" data-skill="Matplotlib">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Matplotlib_icon.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="Seaborn">
+                <img src="https://seaborn.pydata.org/_images/logo-wide-lightbg.svg" alt="Seaborn"
+                    style="filter: invert(4%) sepia(93%) saturate(750%) hue-rotate(165deg) brightness(150%) contrast(90%);">
+            </div>
+
+            <!-- Web Development -->
+            <div class="skill" data-skill="HTML">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="CSS">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="JavaScript">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="Django">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django"
+                    style="filter: brightness(0) saturate(100%) invert(26%) sepia(85%) saturate(372%) hue-rotate(78deg) brightness(90%) contrast(88%);">
+            </div>
+
+            <div class="skill" data-skill="Responsive Design">
+                <img src="https://cdn.simpleicons.org/csswizardry/FFFFFF" alt="">
+            </div>
+
+            <!-- Version Control & Tools -->
+            <div class="skill" data-skill="Git">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="">
+            </div>
+
+            <div class="skill" data-skill="GitHub">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+                    alt="" style="filter: invert(1);   box-shadow: 0 0 15px #ffffff;">
+            </div>
+
+            <div class="skill" data-skill="VS Code">
+                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="">
+            </div>
+
+        </div>
     </section>
 
     <section id="projects">
@@ -646,6 +721,97 @@
         document.addEventListener("DOMContentLoaded", () => {
             setTimeout(typeAnimation, 1000);
         });
+    </script>
+
+    <!-- <script>
+        const skills = document.querySelectorAll('.skill');
+        const container = document.querySelector('.skills-container');
+        const radius = 190; // distance from center
+        const total = skills.length;
+        const angleStep = (2 * Math.PI) / total;
+
+        // Arrange skills in a circle initially
+        skills.forEach((skill, i) => {
+            const angle = i * angleStep;
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+            skill.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0px)`;
+        });
+
+        // Hover animation
+        container.addEventListener('mousemove', (e) => {
+            const rect = container.getBoundingClientRect();
+            const offsetX = (e.clientX - rect.left - rect.width / 2) / 50;
+            const offsetY = (e.clientY - rect.top - rect.height / 2) / 50;
+
+            skills.forEach((skill, i) => {
+                const angle = i * angleStep + offsetX;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle + offsetY);
+                skill.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0px)`;
+            });
+        });
+
+        // Slowly orbit automatically
+        let orbitAngle = 0;
+        function orbitSkills() {
+            orbitAngle += 0.002; // slow speed
+            skills.forEach((skill, i) => {
+                const angle = i * angleStep + orbitAngle;
+                const x = radius * Math.cos(angle);
+                const y = radius * Math.sin(angle);
+                skill.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0px)`;
+            });
+            requestAnimationFrame(orbitSkills);
+        }
+
+        orbitSkills();
+
+    </script> -->
+
+    <script>
+        const skills = document.querySelectorAll('.skill');
+        const container = document.querySelector('.skills-container');
+        const total = skills.length;
+
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+
+        let positions = [];
+        let speed = 0.6; // speed of movement
+
+        // Initialize positions along a square path
+        skills.forEach((skill, i) => {
+            const perimeter = 2 * (width + height - 160); // 160 for skill size compensation
+            const step = (i * perimeter) / total;
+            positions.push(step);
+        });
+
+        // Function to calculate x, y from square perimeter
+        function getSquarePosition(step) {
+            const w = width - 80;  // account for skill width
+            const h = height - 80; // account for skill height
+            const perimeter = 2 * (w + h);
+
+            step = step % perimeter;
+
+            if (step < w) return { x: step, y: 0 };               // Top
+            else if (step < w + h) return { x: w, y: step - w };  // Right
+            else if (step < w + h + w) return { x: w - (step - w - h), y: h }; // Bottom
+            else return { x: 0, y: h - (step - w - h - w) };     // Left
+        }
+
+        // Animate skills along square
+        function moveSkills() {
+            skills.forEach((skill, i) => {
+                positions[i] += speed;
+                const pos = getSquarePosition(positions[i]);
+                skill.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
+            });
+            requestAnimationFrame(moveSkills);
+        }
+
+        moveSkills();
     </script>
 </body>
 

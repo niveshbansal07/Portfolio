@@ -680,9 +680,10 @@ textarea {
   font-weight: 100;
 }
 
-.home-bio{
+.home-bio {
   margin-top: 10vh;
 }
+
 .home-bio p {
   font-size: medium;
 }
@@ -811,5 +812,77 @@ textarea {
     width: 22px;
     height: 22px;
     stroke: black;
+  }
+}
+
+/* Skills Section */
+
+.skills-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.skills-container {
+  width: 90%;
+  max-width: 500px;
+  height: 500px;
+  margin: 30px auto;
+  perspective: 1000px;
+  position: relative;
+  background: transparent
+}
+
+.skill {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+}
+
+.skill img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s;
+}
+
+.skill:hover img {
+  transform: scale(1.3);
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .skills-container {
+    width: 100%;
+    margin: 20px auto;
+    height: auto;
+    margin-bottom: -50px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .skill {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-container {
+    width: 100%;
+    margin: 20px auto;
+    height: auto;
+    margin-bottom: -50px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .skill {
+    width: 50px;
+    height: 50px;
   }
 }
