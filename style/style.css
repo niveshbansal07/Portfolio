@@ -726,7 +726,7 @@ textarea {
 .social-icons {
   display: flex;
   align-items: left;
-  gap: 20px; 
+  gap: 20px;
 }
 
 .social-icons a {
@@ -778,6 +778,10 @@ textarea {
 
   .typing-text::after {
     font-size: 2rem;
+  }
+
+  .home-bio {
+    margin-top: 10vh;
   }
 
   .home-bio p {
