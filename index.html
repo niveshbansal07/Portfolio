@@ -184,7 +184,7 @@
         </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="projects-section">
         <div class="heading">Projects</div>
         <div class="projects">
             <div class="project">
@@ -798,66 +798,6 @@
             setTimeout(typeAnimation, 1000);
         });
     </script>
-        const skills = document.querySelectorAll('.skill');
-        const container = document.querySelector('.skills-container');
-        const total = skills.length;
-
-        let speed = 0.6; // speed of movement
-        let positions = [];
-
-        // Function to get current container dimensions dynamically
-        function getContainerDimensions() {
-            const width = container.clientWidth;
-            const height = container.clientHeight;
-
-            // For mobile screens, reduce height to fit content
-            const isMobile = window.innerWidth <= 768;
-            const adjustedHeight = isMobile ? width * 0.8 : height; // make it almost square for mobile
-            return { width, height: adjustedHeight };
-        }
-
-        // Initialize positions along a square path
-        function initPositions() {
-            const { width, height } = getContainerDimensions();
-            positions = [];
-            const perimeter = 2 * (width + height - 80); // 80 is skill size
-            skills.forEach((skill, i) => {
-                positions.push((i * perimeter) / total);
-            });
-        }
-
-        // Function to calculate x, y from square perimeter
-        function getSquarePosition(step, width, height) {
-            const w = width - 80;  // skill width
-            const h = height - 80; // skill height
-            const perimeter = 2 * (w + h);
-
-            step = step % perimeter;
-
-            if (step < w) return { x: step, y: 0 };               // Top
-            else if (step < w + h) return { x: w, y: step - w };  // Right
-            else if (step < w + h + w) return { x: w - (step - w - h), y: h }; // Bottom
-            else return { x: 0, y: h - (step - w - h - w) };     // Left
-        }
-
-        // Animate skills along square
-        function moveSkills() {
-            const { width, height } = getContainerDimensions();
-            skills.forEach((skill, i) => {
-                positions[i] += speed;
-                const pos = getSquarePosition(positions[i], width, height);
-                skill.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
-            });
-            requestAnimationFrame(moveSkills);
-        }
-
-        // Re-initialize positions on resize for responsiveness
-        window.addEventListener('resize', initPositions);
-
-        // Initialize and start animation
-        initPositions();
-        moveSkills();
-    </script> -->
 
     <script>
         const skills = document.querySelectorAll('.skill');
@@ -909,7 +849,6 @@
 
         moveSkills();
     </script>
-
 
 </body>
 

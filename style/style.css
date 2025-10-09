@@ -861,17 +861,37 @@ textarea {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .project-section {
+    margin: 0px auto;
+  }
+
+  .skills-section {
+    margin: 0px auto;
+  }
+
   .skills-container {
     height: 300px;
   }
-  .skill { width: 60px; height: 60px; }
+
+  .skill {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 @media (max-width: 480px) {
+    .skills-section {
+    margin: 0px auto;
+  }
+
   .skills-container {
     height: 250px;
   }
-  .skill { width: 50px; height: 50px; }
+
+  .skill {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 
@@ -937,10 +957,10 @@ textarea {
     flex: unset;
   }
 
-  .footer-info{
+  .footer-info {
     margin-bottom: -140px;
   }
- 
+
   .footer-bottom {
     flex-direction: column;
     align-items: center;
