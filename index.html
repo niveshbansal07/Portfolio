@@ -798,75 +798,38 @@
             setTimeout(typeAnimation, 1000);
         });
     </script>
-
-    <!-- <script>
         const skills = document.querySelectorAll('.skill');
         const container = document.querySelector('.skills-container');
-        const radius = 190; // distance from center
         const total = skills.length;
-        const angleStep = (2 * Math.PI) / total;
 
-        // Arrange skills in a circle initially
-        skills.forEach((skill, i) => {
-            const angle = i * angleStep;
-            const x = radius * Math.cos(angle);
-            const y = radius * Math.sin(angle);
-            skill.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0px)`;
-        });
+        let speed = 0.6; // speed of movement
+        let positions = [];
 
-        // Hover animation
-        container.addEventListener('mousemove', (e) => {
-            const rect = container.getBoundingClientRect();
-            const offsetX = (e.clientX - rect.left - rect.width / 2) / 50;
-            const offsetY = (e.clientY - rect.top - rect.height / 2) / 50;
+        // Function to get current container dimensions dynamically
+        function getContainerDimensions() {
+            const width = container.clientWidth;
+            const height = container.clientHeight;
 
-            skills.forEach((skill, i) => {
-                const angle = i * angleStep + offsetX;
-                const x = radius * Math.cos(angle);
-                const y = radius * Math.sin(angle + offsetY);
-                skill.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0px)`;
-            });
-        });
-
-        // Slowly orbit automatically
-        let orbitAngle = 0;
-        function orbitSkills() {
-            orbitAngle += 0.002; // slow speed
-            skills.forEach((skill, i) => {
-                const angle = i * angleStep + orbitAngle;
-                const x = radius * Math.cos(angle);
-                const y = radius * Math.sin(angle);
-                skill.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0px)`;
-            });
-            requestAnimationFrame(orbitSkills);
+            // For mobile screens, reduce height to fit content
+            const isMobile = window.innerWidth <= 768;
+            const adjustedHeight = isMobile ? width * 0.8 : height; // make it almost square for mobile
+            return { width, height: adjustedHeight };
         }
 
-        orbitSkills();
-
-    </script> -->
-
-    <script>
-        const skills = document.querySelectorAll('.skill');
-        const container = document.querySelector('.skills-container');
-        const total = skills.length;
-
-        const width = container.clientWidth;
-        const height = container.clientHeight;
-
-        let positions = [];
-        let speed = 0.6; // speed of movement
-
         // Initialize positions along a square path
-        skills.forEach((skill, i) => {
-            const perimeter = 2 * (width + height - 160); // 160 for skill size compensation
-            const step = (i * perimeter) / total;
-            positions.push(step);
-        });
+        function initPositions() {
+            const { width, height } = getContainerDimensions();
+            positions = [];
+            const perimeter = 2 * (width + height - 80); // 80 is skill size
+            skills.forEach((skill, i) => {
+                positions.push((i * perimeter) / total);
+            });
+        }
 
         // Function to calculate x, y from square perimeter
-        function getSquarePosition(step) {
-            const w = width - 80;  // account for skill width
-            const h = height - 80; // account for skill height
+        function getSquarePosition(step, width, height) {
+            const w = width - 80;  // skill width
+            const h = height - 80; // skill height
             const perimeter = 2 * (w + h);
 
             step = step % perimeter;
@@ -879,16 +842,75 @@
 
         // Animate skills along square
         function moveSkills() {
+            const { width, height } = getContainerDimensions();
             skills.forEach((skill, i) => {
                 positions[i] += speed;
-                const pos = getSquarePosition(positions[i]);
+                const pos = getSquarePosition(positions[i], width, height);
                 skill.style.transform = `translate(${pos.x}px, ${pos.y}px)`;
             });
             requestAnimationFrame(moveSkills);
         }
 
+        // Re-initialize positions on resize for responsiveness
+        window.addEventListener('resize', initPositions);
+
+        // Initialize and start animation
+        initPositions();
+        moveSkills();
+    </script> -->
+
+    <script>
+        const skills = document.querySelectorAll('.skill');
+        const container = document.querySelector('.skills-container');
+
+        let skillData = [];
+
+        // Initialize random positions & velocities
+        skills.forEach(skill => {
+            const maxX = container.clientWidth - skill.clientWidth;
+            const maxY = container.clientHeight - skill.clientHeight;
+
+            skillData.push({
+                el: skill,
+                x: Math.random() * maxX,
+                y: Math.random() * maxY,
+                vx: (Math.random() - 0.5) * 2, // random speed X
+                vy: (Math.random() - 0.5) * 2  // random speed Y
+            });
+        });
+
+        // Animate floating motion
+        function moveSkills() {
+            const maxX = container.clientWidth - 80;
+            const maxY = container.clientHeight - 80;
+
+            skillData.forEach(data => {
+                data.x += data.vx;
+                data.y += data.vy;
+
+                // Bounce off edges
+                if (data.x < 0 || data.x > maxX) data.vx *= -1;
+                if (data.y < 0 || data.y > maxY) data.vy *= -1;
+
+                data.el.style.transform = `translate(${data.x}px, ${data.y}px)`;
+            });
+
+            requestAnimationFrame(moveSkills);
+        }
+
+        window.addEventListener('resize', () => {
+            skillData.forEach(data => {
+                const maxX = container.clientWidth - data.el.clientWidth;
+                const maxY = container.clientHeight - data.el.clientHeight;
+                data.x = Math.min(data.x, maxX);
+                data.y = Math.min(data.y, maxY);
+            });
+        });
+
         moveSkills();
     </script>
+
+
 </body>
 
 </html>
