@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nivesh-bansal.vercel.app/sitemap.xml
