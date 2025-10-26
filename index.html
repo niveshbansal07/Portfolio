@@ -100,7 +100,39 @@
         gtag('js', new Date());
         gtag('config', 'G-1S8WV7V936');
     </script>
+
+     <style>
+        .popup-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #222;
+            color: #fff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-size: 14px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+            z-index: 9999;
+        }
+
+        .popup-message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .popup-success {
+            background: #28a745;
+        }
+
+        .popup-error {
+            background: #dc3545;       
+        }
+    </style> 
+
 </head>
+
 
 
 
@@ -445,22 +477,23 @@
             </div>
 
             <div class="certificate">
-    <img src="src/Certificates/Data_Analysis_GenAI_tata.png" alt="">
-    <div class="certificate-content">
-        <h3>GenAI Data Analytics Job Simulation</h3>
-        <p>Awarded by <strong>Tata iQ</strong> for completing the <strong>AI-powered Data Analytics & Strategy Simulation</strong> on Forage – October 2025.</p>
+                <img src="src/Certificates/Data_Analysis_GenAI_tata.png" alt="">
+                <div class="certificate-content">
+                    <h3>GenAI Data Analytics Job Simulation</h3>
+                    <p>Awarded by <strong>Tata iQ</strong> for completing the <strong>AI-powered Data Analytics &
+                            Strategy Simulation</strong> on Forage – October 2025.</p>
 
-        <p class="skills">
-            Skills: Exploratory Data Analysis, Predictive Modeling
-        </p>
-        
-        <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_68cce5aefdd699977b8abbcf_1761043530942_completion_certificate.pdf"
-            class="btn" target="_blank">
-            <span class="live-icon" style="width:20px; height:20px;"></span>
-            Certificate
-        </a>
-    </div>
-</div>
+                    <p class="skills">
+                        Skills: Exploratory Data Analysis, Predictive Modeling
+                    </p>
+
+                    <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_68cce5aefdd699977b8abbcf_1761043530942_completion_certificate.pdf"
+                        class="btn" target="_blank">
+                        <span class="live-icon" style="width:20px; height:20px;"></span>
+                        Certificate
+                    </a>
+                </div>
+            </div>
 
             <div class="certificate">
                 <img src="src/Certificates/Power_BI.png" alt="">
@@ -639,9 +672,15 @@
                 </div>
             </aside>
 
+            <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+            <script>
+                emailjs.init({ publicKey: "EEefCXwNJIncRDLLE" });
+            </script>
+
+
             <!-- Right: Contact Form -->
             <div class="panel right" aria-label="Contact form">
-                <form action="#" method="post" novalidate>
+                <form id="contact-form" novalidate>
 
                     <div class="row">
                         <div class="col">
@@ -986,8 +1025,48 @@
         moveSkills();
     </script>
 
+    <script>
+        const form = document.getElementById("contact-form");
+
+        function showPopup(message, type) {
+            const popup = document.createElement("div");
+            popup.className = `popup-message ${type === "success" ? "popup-success" : "popup-error"}`;
+            popup.textContent = message;
+            document.body.appendChild(popup);
+
+            // Small animation
+            setTimeout(() => popup.classList.add("show"), 100);
+            setTimeout(() => {
+                popup.classList.remove("show");
+                setTimeout(() => popup.remove(), 300);
+            }, 2500);
+        }
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            emailjs.send(
+                "service_p8obb6h",
+                "template_3gib9b9",
+                {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    subject: document.getElementById("subject").value,
+                    message: document.getElementById("message").value
+                }
+            )
+                .then(() => {
+                    showPopup("Message sent successfully!", "success");
+                    form.reset();
+                })
+                .catch((error) => {
+                    console.error("EmailJS Error:", error);
+                    showPopup("Problem sending message. Try again!", "error");
+                });
+        });
+
+    </script>
 </body>
 
 
 </html>
-
