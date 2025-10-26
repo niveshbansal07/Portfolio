@@ -561,6 +561,7 @@ textarea {
   font-weight: 700;
   padding: 3px 0px;
   background: white;
+  cursor: pointer;
 }
 
 /* ✅ Responsive Design */
@@ -704,16 +705,16 @@ textarea {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  color: #000;
+  color: #FDD33C;
   text-decoration: none;
-  font-size: medium;
+  font-size: 1.3rem;
   transition: color 0.3s ease;
 }
 
 .home-resume:hover {
-  color: #555;
+  color: #FDD33C;
   text-decoration: underline;
-}
+} 
 
 .home-resume svg {
   cursor: pointer;
@@ -1000,4 +1001,10 @@ textarea {
 
 .footer-links li a:hover::after {
   width: 100%;
+}
+
+::selection {
+    background-color: #ffffff;
+    color: #101010;
+    -webkit-text-fill-color: #101010;
 }
