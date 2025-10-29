@@ -1,5 +1,6 @@
 {
-  "name": "nivesh-bansal"
+  "version": 2,
+  "name": "nivesh-bansal",
   "headers": [
     {
       "source": "/sitemap.xml",
