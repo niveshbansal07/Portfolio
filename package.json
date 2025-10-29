@@ -1,0 +1,29 @@
+{
+  "name": "nivesh-bansal-portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website of Nivesh Bansal – web developer and  Data Analyst showcasing projects, skills, and contact details.",
+  "author": "Nivesh Bansal",
+  "license": "MIT",
+  "homepage": "https://nivesh-bansal.vercel.app",
+  "keywords": [
+    "Nivesh Bansal",
+    "Nivesh Bansal portfolio",
+    "web developer portfolio",
+    "frontend/web developer",
+    "HTML CSS JavaScript projects",
+    "Dashboard projects",
+    "PowerBI and Tableau Projects",
+    "Data Analyst portfolio"
+  ],
+  "scripts": {
+    "start": "next start",
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  }
+}
