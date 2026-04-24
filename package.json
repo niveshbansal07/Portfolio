@@ -14,16 +14,5 @@
     "Dashboard projects",
     "PowerBI and Tableau Projects",
     "Data Analyst portfolio"
-  ],
-  "scripts": {
-    "start": "next start",
-    "build": "next build",
-    "dev": "next dev",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
-  }
+  ]
 }
